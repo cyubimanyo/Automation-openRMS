@@ -46,7 +46,7 @@ import cucumber.api.java.en.When
 
 
 class login {
-	
+
 	public static String Location = ''
 
 	@Given("User open Website openMRS")
@@ -62,7 +62,7 @@ class login {
 	def loginWebsite(String username, String password) {
 		TestObject element_username = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='username']")
 		TestObject element_password = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='password']")
-		
+
 		WebUI.click(element_username)
 		WebUI.setText(element_username, username)
 		WebUI.click(element_password)
@@ -74,44 +74,44 @@ class login {
 	@And("User select Location")
 	def selectLocation() {
 		TestObject element_location = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//li[@id='${Location}']")
-		
+
 		WebUI.click(element_location)
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
-	
+
 	@And("User click Login")
 	def clickLogin() {
 		TestObject element_login_button = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='loginButton']")
-		
+
 		WebUI.click(element_login_button)
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
-	
+
 	@And("User verify text at Homepage")
 	def verifyTextHomepage() {
 		TestObject verify_homepage = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//h4[normalize-space()='Logged in as Super User (admin) at ${Location}.']")
-		
+
 		WebUI.verifyElementText(verify_homepage, "Logged in as Super User (admin) at ${Location}.")
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
-	
+
 	@Then("User verify text invalid Username or Password")
 	def verifyInvalidUsernameOrPassword() {
 		TestObject verify_error_message = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//div[@id='error-message']")
-		
+
 		WebUI.verifyElementText(verify_error_message, "Invalid username/password. Please try again.")
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 		WebUI.closeBrowser()
 	}
-	
+
 	@Then("User logout from Website openMRS")
 	def logoutWebsite() {
 		TestObject element_logout = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//a[normalize-space()='Logout']")
-		
+
 		WebUI.click(element_logout)
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
