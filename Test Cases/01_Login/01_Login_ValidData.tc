@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>01_Login_ValidData</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>cfa02e39-ffe9-47bc-8e1c-88e732aba200</testCaseGuid>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>7793b997-e7c3-4b35-a9f9-9806c6f74d8f</id>
+      <masked>false</masked>
+      <name>Location</name>
+   </variable>
+</TestCaseEntity>
