@@ -4,8 +4,21 @@
 @LoginMethod
 Feature: Login Features
 
+	@00_LoginOnly
+	Scenario Outline: [POSITIVE] Login with valid Username and Password Only
+	# Reusable Login since Data Binding at free Katalon Studio only at maximum of 1 excel at Test Suite
+    Given User open Website openMRS
+		When User login <username>, <password>
+		And User select Location
+		And User click Login
+		And User verify text at Homepage
+	
+	Examples: 
+      | username | password | 
+      | admin    | Admin123 |
+
   @01_Login_ValidData
-  Scenario Outline: Login with valid Username and Password
+  Scenario Outline: [POSITIVE] Login with valid Username and Password
     Given User open Website openMRS
 		When User login <username>, <password>
 		And User select Location
@@ -18,7 +31,7 @@ Feature: Login Features
       | admin    | Admin123 |
   
   @02_Login_InvalidUsername
-  Scenario Outline: Login with invalid Username and valid Password
+  Scenario Outline: [NEGATIVE] Login with invalid Username and valid Password
   	Given User open Website openMRS
 		When User login <username>, <password>
 		And User select Location
@@ -30,7 +43,7 @@ Feature: Login Features
       | apaya    | Admin123 |
   
   @03_Login_InvalidPassword
-  Scenario Outline: Login with valid Username and invalid Password
+  Scenario Outline: [NEGATIVE] Login with valid Username and invalid Password
   	Given User open Website openMRS
 		When User login <username>, <password>
 		And User select Location

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>00_LoginOnly</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>31657b24-43d3-48c0-b58a-286aafaadbd0</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>bafdf85e-a55c-4c7e-a24a-e60c22491eab</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>bafdf85e-a55c-4c7e-a24a-e60c22491eab</id>
+      <masked>false</masked>
+      <name>Location</name>
+   </variable>
+</TestCaseEntity>
