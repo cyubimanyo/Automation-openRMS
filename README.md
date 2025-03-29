@@ -5,13 +5,13 @@ Repository ini merupakan website automation dari URL [OpenMRS](https://o2.openmr
 ## Test Cases
 Pada automation website kali ini, beberapa test case yang dibuat adalah sebagai berikut:
 
-### Positive Test Cases
+### ✅ Positive Test Cases 
 1. **Login with valid Username and Password Only**
 2. **Login with valid Username and Password**
 3. **Register for a new Patient**
 4. **Make Appointment for the first time**
 
-### Negative Test Cases
+### ❌ Negative Test Cases
 5. **Login with invalid Username and valid Password**
 6. **Login with valid Username and invalid Password**
 
