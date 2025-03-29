@@ -7,6 +7,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
+import com.kms.katalon.core.configuration.RunConfiguration
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testcase.TestCase
@@ -50,7 +51,9 @@ class login {
 
 	@Given("User open Website openMRS")
 	def openWebsite() {
-		WebUI.openBrowser(GlobalVariable.url)
+		WebUI.openBrowser('')
+		WebUI.navigateToUrl(GlobalVariable.url)
+		WebUI.maximizeWindow()
 		WebUI.delay(2)
 		WebUI.takeScreenshot()
 	}
@@ -95,6 +98,16 @@ class login {
 		WebUI.takeScreenshot()
 	}
 	
+	@Then("User verify text invalid Username or Password")
+	def verifyInvalidUsernameOrPassword() {
+		TestObject verify_error_message = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//div[@id='error-message']")
+		
+		WebUI.verifyElementText(verify_error_message, "Invalid username/password. Please try again.")
+		WebUI.delay(1)
+		WebUI.takeScreenshot()
+		WebUI.closeBrowser()
+	}
+	
 	@Then("User logout from Website openMRS")
 	def logoutWebsite() {
 		TestObject element_logout = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//a[normalize-space()='Logout']")
@@ -102,5 +115,6 @@ class login {
 		WebUI.click(element_logout)
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
+		WebUI.closeBrowser()
 	}
 }

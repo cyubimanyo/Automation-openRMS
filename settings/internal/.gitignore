@@ -4,3 +4,4 @@
 /com.kms.katalon.execution.webui.properties
 /com.kms.katalon.integration.analytics.properties
 /com.kms.katalon.integration.qtest.properties
+/com.kms.katalon.core.webservice.properties

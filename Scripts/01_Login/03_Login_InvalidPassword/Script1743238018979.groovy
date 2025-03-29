@@ -21,4 +21,4 @@ import org.openqa.selenium.Keys as Keys
 
 login.Location = Location
 
-CucumberKW.runFeatureFileWithTags("Include/features/01_Login/Login.feature", "@01_Login_ValidData")
+CucumberKW.runFeatureFileWithTags("Include/features/01_Login/Login.feature", "@03_Login_InvalidPassword")

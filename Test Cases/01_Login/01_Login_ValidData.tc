@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
+   <description>Data Iteration :
+
+1 = Inpatient Ward
+
+2 = Isolation Ward
+
+3 = Laboratory
+
+4 = Outpatient Clinic
+
+5 = Pharmacy
+
+6 = Registration Desk</description>
    <name>01_Login_ValidData</name>
    <tag></tag>
    <comment></comment>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>02_Login_InvalidUsername</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b15f13ec-8547-4379-87fe-89d22a90fc16</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>504a55c6-ea49-49d8-896d-4c0d1ded4844</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>504a55c6-ea49-49d8-896d-4c0d1ded4844</id>
+      <masked>false</masked>
+      <name>Location</name>
+   </variable>
+</TestCaseEntity>

@@ -33,4 +33,48 @@
          <variableId>7793b997-e7c3-4b35-a9f9-9806c6f74d8f</variableId>
       </variableLink>
    </testCaseLink>
+   <testCaseLink>
+      <guid>493d3ff7-f78d-4a38-b64c-178d4c52c547</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/01_Login/02_Login_InvalidUsername</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>aceb1856-eed7-49fa-91ce-b6fcb558312e</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/Location</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>aceb1856-eed7-49fa-91ce-b6fcb558312e</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Location</value>
+         <variableId>504a55c6-ea49-49d8-896d-4c0d1ded4844</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>a75af6e5-7774-46f5-a7f5-97d4592f792d</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/01_Login/03_Login_InvalidPassword</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>94f96673-d766-4671-8d18-278f6ed97462</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/Location</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>94f96673-d766-4671-8d18-278f6ed97462</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Location</value>
+         <variableId>2044e967-ab4a-4c8a-b5fe-0bbc1cae8f79</variableId>
+      </variableLink>
+   </testCaseLink>
 </TestSuiteEntity>
