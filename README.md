@@ -7,6 +7,7 @@ Pada automation website kali ini, beberapa test case yang dibuat adalah sebagai 
 
 ### ✅ Positive Test Cases ✅
 1. **Login with valid Username and Password Only**
+(Reusable Login since Data Binding at free Katalon Studio only at maximum of 1 excel at Test Suite)
 2. **Login with valid Username and Password**
 3. **Register for a new Patient**
 4. **Make Appointment for the first time**
