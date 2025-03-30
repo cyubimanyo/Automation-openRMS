@@ -37,7 +37,7 @@ Untuk login, **Location** dapat dipilih berdasarkan **Data Iteration**. Data ini
 ## Video Hasil Running
 Untuk melihat video hasil running, silakan akses tautan berikut:
 
-[Link Video Menyusul]
+[Report PDF + Video](https://drive.google.com/drive/folders/1LhpJNlToOHZHUzgc_Dv4H8jBpXzoYgnE?usp=drive_link)
 
 ---
 
