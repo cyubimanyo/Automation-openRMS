@@ -3,7 +3,7 @@
 Repository ini merupakan website automation dari URL [OpenMRS](https://o2.openmrs.org/openmrs/login.htm) yang dibuat oleh **Andhiny Fatikha Rizki** (saat ini QA Automation di Bank BRI). Project ini dibuat untuk memenuhi Online Assesment posisi Quality Assurance Engineer di PT Infokes Indonesia.
 
 ## Test Cases
-Pada automation website kali ini, beberapa test case yang dibuat adalah sebagai berikut:
+Pada automation website kali ini, beberapa test case yang telah dibuat adalah sebagai berikut:
 
 ### ✅ Positive Test Cases ✅
 1. **Login with valid Username and Password Only**
