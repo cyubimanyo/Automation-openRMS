@@ -112,6 +112,56 @@ class register_patient {
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
+	
+	@And("User search Patient Name after register New Patient")
+	def searchPatientName1() {
+		String full_name = "${GivenName} ${MiddleName} ${FamilyName}"
+		KeywordUtil.logInfo("Full Name = ${full_name}")
+		
+		TestObject element_search_patient = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='patient-search']")
+
+		WebUI.click(element_search_patient)
+		WebUI.setText(element_search_patient, full_name)
+		KeywordUtil.logInfo("Patient Name = ${full_name}")
+		WebUI.delay(1)
+		WebUI.takeScreenshot()
+	}
+	
+	@And("User verify registered New Patient name exist at record")
+	def verifyRegisteredNewPatientName() {
+	    String full_name = "${GivenName} ${MiddleName} ${FamilyName}"
+	    KeywordUtil.logInfo("Full Name = ${full_name}")
+	
+	    TestObject element_patient_name = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//td[contains(normalize-space(), '${full_name}')]")
+	
+	    WebUI.takeScreenshot()
+	
+	    if (WebUI.verifyElementPresent(element_patient_name, 5, FailureHandling.OPTIONAL)) {
+	        String actualText = WebUI.getText(element_patient_name).trim()
+	        KeywordUtil.logInfo("🔍 Found text: ${actualText}")
+	
+	        if (actualText.contains(full_name)) {
+	            KeywordUtil.logInfo("✅ Patient record found: ${full_name}")
+	        } else {
+	            KeywordUtil.logInfo("❌ Patient record text mismatch! Expected: ${full_name}, Found: ${actualText}")
+	            WebUI.takeScreenshot()
+	            KeywordUtil.markFailed("Patient record verification failed due to text mismatch.")
+	        }
+	    } else {
+	        KeywordUtil.logInfo("❌ Patient record NOT found: ${full_name}")
+	        WebUI.takeScreenshot()
+	        KeywordUtil.markFailed("Patient record verification failed because the element is not present.")
+	    }
+	
+	    WebUI.delay(3)
+	}
+
+	@And("User back to Homepage")
+	def backToHomepage() {
+		WebUI.navigateToUrl("https://o2.openmrs.org/openmrs/index.htm")
+		WebUI.delay(3)
+		WebUI.takeScreenshot()
+	}
 
 	@And("User click Next button")
 	def clickNextButton() {
@@ -151,9 +201,14 @@ class register_patient {
 		String relativesType = generateRandomRelativesType()
 
 		TestObject element_relatives_type = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//select[@id='relationship_type']")
+		TestObject element_person_name = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@placeholder='Person Name']")
 
 		WebUI.selectOptionByLabel(element_relatives_type, relativesType, true)
 		KeywordUtil.logInfo("Selected Relatives Type = ${relativesType}")
+		
+		WebUI.click(element_person_name)
+		WebUI.setText(element_person_name, RelativesName)
+		KeywordUtil.logInfo("Relatives Name = ${RelativesName}")
 
 		WebUI.delay(1)
 		WebUI.takeScreenshot()

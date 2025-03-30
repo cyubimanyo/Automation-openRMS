@@ -54,6 +54,8 @@ class visit {
 	public static String MinTimeFrameValue = ''
 	public static String MaxTimeFrameValue = ''
 	
+	String selectedTimeFrameUnits = ''
+	
 	def generateRandomTimeFrameUnits() {
 		def time_frame_units = [
 			"Day(s)",
@@ -71,6 +73,48 @@ class visit {
 		WebUI.click(element_find_patient_record)
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
+	}
+	
+	@And("User verify Appointments Request")
+	def verifyAppointmentsRequest() {
+	    String timeFrame = "${MinTimeFrameValue} ${selectedTimeFrameUnits} - ${MaxTimeFrameValue} ${selectedTimeFrameUnits}"
+	    
+	    TestObject text_service_type = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//td[normalize-space()='${AppointmentType}']")
+	    TestObject text_provider = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//td[normalize-space()='${Provider}']")
+	    TestObject text_time_frame = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//td[normalize-space()='${timeFrame}']")
+		
+		WebUI.scrollToElement(text_service_type, 3)
+		
+	    boolean isServiceTypeCorrect = WebUI.verifyElementText(text_service_type, AppointmentType, FailureHandling.OPTIONAL)
+	    boolean isProviderCorrect = WebUI.verifyElementText(text_provider, Provider, FailureHandling.OPTIONAL)
+	    boolean isTimeFrameCorrect = WebUI.verifyElementText(text_time_frame, timeFrame, FailureHandling.OPTIONAL)
+	
+	    if (isServiceTypeCorrect && isProviderCorrect && isTimeFrameCorrect) {
+	        KeywordUtil.logInfo("✅ All appointment details are correct:")
+	        KeywordUtil.logInfo("Service Type: ${AppointmentType}")
+	        KeywordUtil.logInfo("Provider: ${Provider}")
+	        KeywordUtil.logInfo("Time Frame: ${timeFrame}")
+	    } else {
+	        KeywordUtil.logInfo("❌ Appointment verification failed!")
+	        
+	        if (!isServiceTypeCorrect) {
+	            KeywordUtil.logInfo("❌ Service Type mismatch! Expected: '${AppointmentType}', but not found.")
+	        }
+	        
+	        if (!isProviderCorrect) {
+	            KeywordUtil.logInfo("❌ Provider mismatch! Expected: '${Provider}', but not found.")
+	        }
+	
+	        if (!isTimeFrameCorrect) {
+	            KeywordUtil.logInfo("❌ Time Frame mismatch! Expected: '${timeFrame}', but not found.")
+	        }
+	
+	        WebUI.takeScreenshot()
+	        KeywordUtil.markFailed("❌ One or more appointment details are incorrect.")
+	    }
+	
+	    WebUI.delay(1)
+	    WebUI.takeScreenshot()
 	}
 	
 	@And("User click Appointments tab")
@@ -93,7 +137,7 @@ class visit {
 	
 	@And("User fill Time Frame")
 	def fillTimeFrame() {
-		String timeFrameUnits = generateRandomTimeFrameUnits()
+		selectedTimeFrameUnits = generateRandomTimeFrameUnits()
 		
 		TestObject element_min_timeframe_value = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='min-time-frame-value']")
 		TestObject element_min_timeframe_units = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//select[@id='min-time-frame-units']")
@@ -111,8 +155,8 @@ class visit {
 		KeywordUtil.logInfo("Min Time Frame Value = ${MinTimeFrameValue}")
 		
 		// Fill Min Time Frame Units
-		WebUI.selectOptionByLabel(element_min_timeframe_units, timeFrameUnits, false)
-		KeywordUtil.logInfo("Selected Min Time Frame Units = ${timeFrameUnits}")
+		WebUI.selectOptionByLabel(element_min_timeframe_units, selectedTimeFrameUnits, false)
+		KeywordUtil.logInfo("Selected Min Time Frame Units = ${selectedTimeFrameUnits}")
 		
 		// Fill Max Time Frame Value
 		WebUI.click(element_max_timeframe_value)
@@ -120,8 +164,8 @@ class visit {
 		KeywordUtil.logInfo("Max Time Frame Value = ${MaxTimeFrameValue}")
 		
 		// Fill Max Time Frame Units
-		WebUI.selectOptionByLabel(element_max_timeframe_units, timeFrameUnits, false)
-		KeywordUtil.logInfo("Selected Max Time Frame Units = ${timeFrameUnits}")
+		WebUI.selectOptionByLabel(element_max_timeframe_units, selectedTimeFrameUnits, false)
+		KeywordUtil.logInfo("Selected Max Time Frame Units = ${selectedTimeFrameUnits}")
 		
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
@@ -191,8 +235,9 @@ class visit {
 		WebUI.takeScreenshot()
 	}
 	
-	@And("User search Patient Name")
-	def searchPatientName() {
+	@And("User search existed Patient Name")
+	def searchPatientName2() {
+		
 		TestObject element_search_patient = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='patient-search']")
 
 		WebUI.click(element_search_patient)

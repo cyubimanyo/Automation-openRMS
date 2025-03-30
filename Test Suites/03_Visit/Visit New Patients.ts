@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>Visit New Patients</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>30</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>ed6977ee-480a-4376-a58a-43d18d8a0990</testSuiteGuid>
+   <testCaseLink>
+      <guid>278cd6e6-7bdd-4741-a5ca-987e802bb2bd</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/01_Login/00_LoginOnly</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>f1736d87-9e81-4372-8f42-8fca1c3e58ef</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/Location</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>f1736d87-9e81-4372-8f42-8fca1c3e58ef</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Location</value>
+         <variableId>bafdf85e-a55c-4c7e-a24a-e60c22491eab</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>270bfa79-4e01-4df8-858e-81b3a6715e55</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/03_Visit/01_MakeAppointment</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>c92843d2-63f4-4b71-8ee8-2156901e9b67</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/Register New Patient</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>c92843d2-63f4-4b71-8ee8-2156901e9b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>GivenName</value>
+         <variableId>7e3b451d-0958-4b93-962a-fdb26e26b6ff</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>c92843d2-63f4-4b71-8ee8-2156901e9b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>MiddleName</value>
+         <variableId>99c45519-4562-4083-ac86-d424090a6b49</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>c92843d2-63f4-4b71-8ee8-2156901e9b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>FamilyName</value>
+         <variableId>e754a742-70c5-42fc-a837-44bb33788d43</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>c92843d2-63f4-4b71-8ee8-2156901e9b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>AppointmentType</value>
+         <variableId>24a97b4e-cd65-4a65-9de7-2d3e55b07eaa</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>c92843d2-63f4-4b71-8ee8-2156901e9b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Provider</value>
+         <variableId>6c5e3f97-c2c8-4e69-92a5-20780b140c11</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>c92843d2-63f4-4b71-8ee8-2156901e9b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>MinTimeFrameValue</value>
+         <variableId>6fd825d8-23ec-44cb-b479-d08c7a595c6d</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>c92843d2-63f4-4b71-8ee8-2156901e9b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>MaxTimeFrameValue</value>
+         <variableId>0ac4ced9-a1b6-422d-83bf-21aa447e217b</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

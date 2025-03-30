@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>Login</name>
+   <name>02_Negative - Login</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,68 +10,46 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>false</rerunImmediately>
-   <testSuiteGuid>22234f7b-9e2f-400d-ba3a-0216fcb2c17d</testSuiteGuid>
+   <testSuiteGuid>d7555c1a-7e74-4a0a-90d3-405aab1e11f1</testSuiteGuid>
    <testCaseLink>
-      <guid>4a2178f3-52f2-47d6-9189-dcff18d38866</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/01_Login/01_Login_ValidData</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>fe718155-7a77-440b-86d4-cbdc748c4883</id>
-         <iterationEntity>
-            <iterationType>SPECIFIC</iterationType>
-            <value>1</value>
-         </iterationEntity>
-         <testDataId>Data Files/Location</testDataId>
-      </testDataLink>
-      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId>fe718155-7a77-440b-86d4-cbdc748c4883</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Location</value>
-         <variableId>7793b997-e7c3-4b35-a9f9-9806c6f74d8f</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>493d3ff7-f78d-4a38-b64c-178d4c52c547</guid>
+      <guid>2c2b7c34-0f73-4399-89d6-99d7f2be922a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/01_Login/02_Login_InvalidUsername</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
-         <id>aceb1856-eed7-49fa-91ce-b6fcb558312e</id>
+         <id>96cff51c-668e-4d8d-bb47-8e5b7eb7264f</id>
          <iterationEntity>
-            <iterationType>SPECIFIC</iterationType>
+            <iterationType>ALL</iterationType>
             <value>1</value>
          </iterationEntity>
          <testDataId>Data Files/Location</testDataId>
       </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>aceb1856-eed7-49fa-91ce-b6fcb558312e</testDataLinkId>
+         <testDataLinkId>96cff51c-668e-4d8d-bb47-8e5b7eb7264f</testDataLinkId>
          <type>DATA_COLUMN</type>
          <value>Location</value>
          <variableId>504a55c6-ea49-49d8-896d-4c0d1ded4844</variableId>
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>a75af6e5-7774-46f5-a7f5-97d4592f792d</guid>
+      <guid>03ac4c02-08f5-4ca9-a380-a990235a57a9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/01_Login/03_Login_InvalidPassword</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
-         <id>94f96673-d766-4671-8d18-278f6ed97462</id>
+         <id>61ef8cd6-2c22-424d-8f1f-12ce70c7d50f</id>
          <iterationEntity>
-            <iterationType>SPECIFIC</iterationType>
-            <value>1</value>
+            <iterationType>ALL</iterationType>
+            <value></value>
          </iterationEntity>
          <testDataId>Data Files/Location</testDataId>
       </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>94f96673-d766-4671-8d18-278f6ed97462</testDataLinkId>
+         <testDataLinkId>61ef8cd6-2c22-424d-8f1f-12ce70c7d50f</testDataLinkId>
          <type>DATA_COLUMN</type>
          <value>Location</value>
          <variableId>2044e967-ab4a-4c8a-b5fe-0bbc1cae8f79</variableId>
