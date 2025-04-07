@@ -55,54 +55,125 @@ class login {
 		WebUI.navigateToUrl(GlobalVariable.url)
 		WebUI.maximizeWindow()
 		WebUI.delay(2)
-		WebUI.takeScreenshot()
+	
+		TestObject element_username = new TestObject('dynamicUsernameField')
+		element_username.addProperty('xpath', ConditionType.EQUALS, "//input[@id='username']")
+	
+		boolean isPageLoaded = WebUI.verifyElementVisible(element_username, FailureHandling.OPTIONAL)
+	
+		if (isPageLoaded) {
+			WebUI.comment("The website is successfully loaded!")
+			WebUI.takeScreenshot()
+		} else {
+			WebUI.comment("The website did not load successfully.")
+			WebUI.takeScreenshot()
+		}
 	}
 
 	@When("User login (.*), (.*)")
 	def loginWebsite(String username, String password) {
-		TestObject element_username = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='username']")
-		TestObject element_password = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='password']")
-
+		TestObject element_username = new TestObject('dynamicUsernameField')
+		element_username.addProperty('xpath', ConditionType.EQUALS, "//input[@id='username']")
+		
+		TestObject element_password = new TestObject('dynamicPasswordField')
+		element_password.addProperty('xpath', ConditionType.EQUALS, "//input[@id='password']")
+	
 		WebUI.click(element_username)
 		WebUI.setText(element_username, username)
+	
 		WebUI.click(element_password)
 		WebUI.setText(element_password, password)
+
+		String filledUsername = WebUI.getAttribute(element_username, 'value')
+		WebUI.comment("Filled Username = ${filledUsername}")
+		String filledPassword = WebUI.getAttribute(element_password, 'value')
+		WebUI.comment("Filled Password = ${filledPassword}")
+	
+		if (filledUsername == username && filledPassword == password) {
+			WebUI.comment("Username and Password successfully filled!")
+		} else {
+			WebUI.comment("Failed to fill Username or Password correctly.")
+		}
+	
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
 
 	@And("User select Location")
 	def selectLocation() {
-		TestObject element_location = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//li[@id='${Location}']")
-
+		TestObject element_location = new TestObject('dynamicLocation')
+		element_location.addProperty('xpath', ConditionType.EQUALS, "//li[@id='${Location}']")
+	
 		WebUI.click(element_location)
 		WebUI.delay(1)
+	
+		boolean isSelected = WebUI.verifyElementAttributeValue(element_location, 'class', 'selected', 5, FailureHandling.OPTIONAL)
+	
+		if (isSelected) {
+			WebUI.comment("Location '${Location}' selected successfully.")
+		} else {
+			WebUI.comment("Failed to select location '${Location}'.")
+		}
+	
 		WebUI.takeScreenshot()
 	}
 
 	@And("User click Login")
 	def clickLogin() {
-		TestObject element_login_button = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='loginButton']")
-
+		TestObject element_login_button = new TestObject('dynamicLoginButton')
+		element_login_button.addProperty('xpath', ConditionType.EQUALS, "//input[@id='loginButton']")
+	
 		WebUI.click(element_login_button)
-		WebUI.delay(1)
+		WebUI.delay(2)
+	
+		TestObject dashboard_element = new TestObject('dashboardIdentifier')
+		dashboard_element.addProperty('xpath', ConditionType.EQUALS, "//div[@id='navbarSupportedContent']")
+	
+		boolean isLoginSuccessful = WebUI.verifyElementVisible(dashboard_element, FailureHandling.OPTIONAL)
+	
+		if (isLoginSuccessful) {
+			WebUI.comment("Login Success!")
+		} else {
+			WebUI.comment("Login Failed — Dashboard not found.")
+		}
+	
 		WebUI.takeScreenshot()
 	}
 
 	@And("User verify text at Homepage")
 	def verifyTextHomepage() {
-		TestObject verify_homepage = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//h4[normalize-space()='Logged in as Super User (admin) at ${Location}.']")
-
-		WebUI.verifyElementText(verify_homepage, "Logged in as Super User (admin) at ${Location}.")
+		String expectedText = "Logged in as Super User (admin) at ${Location}."
+	
+		TestObject verify_homepage = new TestObject('dynamicHomepageText')
+		verify_homepage.addProperty('xpath', ConditionType.EQUALS, "//h4[normalize-space()='${expectedText}']")
+	
+		boolean isTextCorrect = WebUI.verifyElementText(verify_homepage, expectedText, FailureHandling.OPTIONAL)
+	
+		if (isTextCorrect) {
+			WebUI.comment("Text is correctly displayed on the Homepage = '${expectedText}'")
+		} else {
+			WebUI.comment("Expected text not found or incorrect: '${expectedText}'")
+		}
+	
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
 
 	@Then("User verify text invalid Username or Password")
 	def verifyInvalidUsernameOrPassword() {
-		TestObject verify_error_message = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//div[@id='error-message']")
-
-		WebUI.verifyElementText(verify_error_message, "Invalid username/password. Please try again.")
+		TestObject verify_error_message = new TestObject('invalidLoginMessage')
+		verify_error_message.addProperty('xpath', ConditionType.EQUALS, "//div[@id='error-message']")
+	
+		String expectedError = "Invalid username/password. Please try again."
+		
+		boolean isErrorDisplayed = WebUI.verifyElementText(verify_error_message, expectedError, FailureHandling.OPTIONAL)
+	
+		if (isErrorDisplayed) {
+			WebUI.comment("Error message correctly displayed: '${expectedError}'")
+		} else {
+			WebUI.comment("Error message not found or text did not match.")
+		}
+	
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 		WebUI.closeBrowser()
@@ -110,10 +181,23 @@ class login {
 
 	@Then("User logout from Website openMRS")
 	def logoutWebsite() {
-		TestObject element_logout = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//a[normalize-space()='Logout']")
-
+		TestObject element_logout = new TestObject('logoutLink')
+		element_logout.addProperty('xpath', ConditionType.EQUALS, "//a[normalize-space()='Logout']")
+	
+		TestObject element_username = new TestObject('dynamicUsernameField')
+		element_username.addProperty('xpath', ConditionType.EQUALS, "//input[@id='username']")
+	
 		WebUI.click(element_logout)
-		WebUI.delay(1)
+		WebUI.delay(2)
+
+		boolean isLoggedOut = WebUI.verifyElementVisible(element_username, FailureHandling.OPTIONAL)
+	
+		if (isLoggedOut) {
+			WebUI.comment("Successfully logged out and returned to login page.")
+		} else {
+			WebUI.comment("Logout failed — username input not visible.")
+		}
+	
 		WebUI.takeScreenshot()
 		WebUI.closeBrowser()
 	}

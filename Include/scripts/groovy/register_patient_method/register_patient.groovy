@@ -112,12 +112,12 @@ class register_patient {
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
-	
+
 	@And("User search Patient Name after register New Patient")
 	def searchPatientName1() {
 		String full_name = "${GivenName} ${MiddleName} ${FamilyName}"
 		KeywordUtil.logInfo("Full Name = ${full_name}")
-		
+
 		TestObject element_search_patient = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[@id='patient-search']")
 
 		WebUI.click(element_search_patient)
@@ -126,34 +126,34 @@ class register_patient {
 		WebUI.delay(1)
 		WebUI.takeScreenshot()
 	}
-	
+
 	@And("User verify registered New Patient name exist at record")
 	def verifyRegisteredNewPatientName() {
-	    String full_name = "${GivenName} ${MiddleName} ${FamilyName}"
-	    KeywordUtil.logInfo("Full Name = ${full_name}")
-	
-	    TestObject element_patient_name = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//td[contains(normalize-space(), '${full_name}')]")
-	
-	    WebUI.takeScreenshot()
-	
-	    if (WebUI.verifyElementPresent(element_patient_name, 5, FailureHandling.OPTIONAL)) {
-	        String actualText = WebUI.getText(element_patient_name).trim()
-	        KeywordUtil.logInfo("🔍 Found text: ${actualText}")
-	
-	        if (actualText.contains(full_name)) {
-	            KeywordUtil.logInfo("✅ Patient record found: ${full_name}")
-	        } else {
-	            KeywordUtil.logInfo("❌ Patient record text mismatch! Expected: ${full_name}, Found: ${actualText}")
-	            WebUI.takeScreenshot()
-	            KeywordUtil.markFailed("Patient record verification failed due to text mismatch.")
-	        }
-	    } else {
-	        KeywordUtil.logInfo("❌ Patient record NOT found: ${full_name}")
-	        WebUI.takeScreenshot()
-	        KeywordUtil.markFailed("Patient record verification failed because the element is not present.")
-	    }
-	
-	    WebUI.delay(3)
+		String full_name = "${GivenName} ${MiddleName} ${FamilyName}"
+		KeywordUtil.logInfo("Full Name = ${full_name}")
+
+		TestObject element_patient_name = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//td[contains(normalize-space(), '${full_name}')]")
+
+		WebUI.takeScreenshot()
+
+		if (WebUI.verifyElementPresent(element_patient_name, 5, FailureHandling.OPTIONAL)) {
+			String actualText = WebUI.getText(element_patient_name).trim()
+			KeywordUtil.logInfo("🔍 Found text: ${actualText}")
+
+			if (actualText.contains(full_name)) {
+				KeywordUtil.logInfo("✅ Patient record found: ${full_name}")
+			} else {
+				KeywordUtil.logInfo("❌ Patient record text mismatch! Expected: ${full_name}, Found: ${actualText}")
+				WebUI.takeScreenshot()
+				KeywordUtil.markFailed("Patient record verification failed due to text mismatch.")
+			}
+		} else {
+			KeywordUtil.logInfo("❌ Patient record NOT found: ${full_name}")
+			WebUI.takeScreenshot()
+			KeywordUtil.markFailed("Patient record verification failed because the element is not present.")
+		}
+
+		WebUI.delay(3)
 	}
 
 	@And("User back to Homepage")
@@ -185,15 +185,15 @@ class register_patient {
 
 	@And("User select Gender")
 	def selectGender() {
-	    def genders = ["M", "F"]
-	    def selectRandomGender = genders[new Random().nextInt(genders.size())]
-	
-	    TestObject option_gender = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//option[@value='${selectRandomGender}']")
-	
-	    WebUI.click(option_gender)
-	    KeywordUtil.logInfo("Selected Gender = ${selectRandomGender}")
-	    WebUI.delay(1)
-	    WebUI.takeScreenshot()
+		def genders = ["M", "F"]
+		def selectRandomGender = genders[new Random().nextInt(genders.size())]
+
+		TestObject option_gender = new TestObject().addProperty('xpath', ConditionType.EQUALS, "//option[@value='${selectRandomGender}']")
+
+		WebUI.click(option_gender)
+		KeywordUtil.logInfo("Selected Gender = ${selectRandomGender}")
+		WebUI.delay(1)
+		WebUI.takeScreenshot()
 	}
 
 	@And("User fill Relatives")
@@ -205,7 +205,7 @@ class register_patient {
 
 		WebUI.selectOptionByLabel(element_relatives_type, relativesType, true)
 		KeywordUtil.logInfo("Selected Relatives Type = ${relativesType}")
-		
+
 		WebUI.click(element_person_name)
 		WebUI.setText(element_person_name, RelativesName)
 		KeywordUtil.logInfo("Relatives Name = ${RelativesName}")
@@ -310,36 +310,36 @@ class register_patient {
 			KeywordUtil.logInfo("Day & Year is not null!")
 		}
 	}
-	
+
 	@And("User fill Name field")
 	def fillNameField() {
 
 		List<WebElement> nameFields = WebUiCommonHelper.findWebElements(
-			new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[starts-with(@id, 'fr') and contains(@id, '-field')]"),
-			10
-		)
-	
-		if (nameFields.size() >= 3) { 
+				new TestObject().addProperty('xpath', ConditionType.EQUALS, "//input[starts-with(@id, 'fr') and contains(@id, '-field')]"),
+				10
+				)
+
+		if (nameFields.size() >= 3) {
 			// Fill Given Name
 			nameFields[0].click()
 			nameFields[0].sendKeys(GivenName)
 			KeywordUtil.logInfo("Given Name = ${GivenName}")
-	
+
 			// Fill Middle Name
 			nameFields[1].click()
 			nameFields[1].sendKeys(MiddleName)
 			KeywordUtil.logInfo("Middle Name = ${MiddleName}")
-	
+
 			// Fill Family Name
 			nameFields[2].click()
 			nameFields[2].sendKeys(FamilyName)
 			KeywordUtil.logInfo("Family Name = ${FamilyName}")
-	
+
 			WebUI.delay(1)
 			WebUI.takeScreenshot()
 		} else {
 			KeywordUtil.markFailed("Not enough Name fields found! Expected 3, but found ${nameFields.size()}")
 		}
 	}
-	
+
 }
